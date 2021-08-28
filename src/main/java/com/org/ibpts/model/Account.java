@@ -10,7 +10,7 @@ import java.math.BigInteger;
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column( nullable = false)
+    @Column(nullable = false)
     private String id;
     @Column(name = "account_number", nullable = false)
     private BigInteger accountNumber;

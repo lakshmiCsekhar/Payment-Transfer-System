@@ -5,13 +5,11 @@ import com.org.ibpts.model.Account;
 import com.org.ibpts.repository.AccountInformationRepository;
 import com.org.ibpts.response.AccountBalanceResponse;
 import com.org.ibpts.service.impl.AccountInformationServiceImpl;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.math.BigDecimal;
@@ -34,7 +32,7 @@ public class AccountInformationServiceImplTest {
 
     @DisplayName("Should get correct account balance")
     @Test
-    void shoudGetAccountBalanceResponse() throws ApiException {
+    void shouldGetAccountBalanceResponse() throws ApiException {
         Account account = new Account();
         account.setId("12345");
         account.setName("TestAccount");
@@ -53,7 +51,7 @@ public class AccountInformationServiceImplTest {
     void testAccountNotPresentError() {
         Optional<Account> notExistingAccount = Optional.empty();
         when(accountInformationRepository.findByAccountNumber(any(BigInteger.class))).thenReturn(notExistingAccount);
-        assertThrows(ApiException.class,() -> {
+        assertThrows(ApiException.class, () -> {
             accountInformationService.getAccountBalanceResponse(any(BigInteger.class));
         });
     }
@@ -62,7 +60,7 @@ public class AccountInformationServiceImplTest {
     @DisplayName("Test Api Exception")
     void testApiException() {
         when(accountInformationRepository.findByAccountNumber(any(BigInteger.class))).thenThrow(new RuntimeException("a random error"));
-        assertThrows(ApiException.class,() -> {
+        assertThrows(ApiException.class, () -> {
             accountInformationService.getAccountBalanceResponse(any(BigInteger.class));
         });
     }

@@ -60,7 +60,7 @@ public class TransactionServiceImplTest {
         transactionsList.add(transactionsOne);
         transactionsList.add(transactionsTwo);
 
-        when(transactionsRepository.findByDebtorId(account.getId(), PageRequest.of(0,20))).thenReturn(transactionsList);
+        when(transactionsRepository.findByDebtorId(account.getId(), PageRequest.of(0, 20))).thenReturn(transactionsList);
         when(transactionsRepository.findByReference("testReference")).thenReturn(transactionsOne);
     }
 

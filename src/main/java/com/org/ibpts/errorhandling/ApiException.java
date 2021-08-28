@@ -1,16 +1,16 @@
 package com.org.ibpts.errorhandling;
 
-public class ApiException  extends Exception {
+public class ApiException extends Exception {
 
-    public  ApiException(Exception e) {
+    public ApiException(Exception e) {
         super(e);
     }
 
-    protected  ApiException() {
+    protected ApiException() {
         super();
     }
 
-    public  ApiException(String message) {
+    public ApiException(String message) {
         super(message);
     }
 
@@ -18,7 +18,7 @@ public class ApiException  extends Exception {
         super(message, cause);
     }
 
-    protected  ApiException(Throwable cause) {
+    protected ApiException(Throwable cause) {
         super(cause);
     }
 }

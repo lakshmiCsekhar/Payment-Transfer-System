@@ -34,7 +34,7 @@ public class TransactionServiceImpl implements TransactionService {
         try {
             Optional<Account> debtor = accountInformationRepository.findByAccountNumber(accountNumber);
             if (debtor.isPresent()) {
-                List<Transactions> transactionsFromDb = transactionsRepository.findByDebtorId(debtor.get().getId(), PageRequest.of(0,20));
+                List<Transactions> transactionsFromDb = transactionsRepository.findByDebtorId(debtor.get().getId(), PageRequest.of(0, 20));
                 List<Transaction> transactionList = new ArrayList<>();
                 for (Transactions tr : transactionsFromDb) {
                     Transaction ts = new Transaction();

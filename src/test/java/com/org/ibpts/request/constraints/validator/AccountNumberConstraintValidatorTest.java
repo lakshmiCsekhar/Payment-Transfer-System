@@ -3,8 +3,6 @@ package com.org.ibpts.request.constraints.validator;
 import com.org.ibpts.utils.AccountNumberValidator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigInteger;
 
@@ -12,7 +10,6 @@ public class AccountNumberConstraintValidatorTest {
 
     AccountNumberValidator accountNumberValidator = new AccountNumberValidator();
     AccountNumberConstraintValidator validator = new AccountNumberConstraintValidator(accountNumberValidator);
-
 
 
     @Test

@@ -11,30 +11,29 @@ import java.util.Date;
 
 public class PaymentTransferRequest {
 
-    @Schema(description = "amount to be transferred.",example = "1000", required = true)
+    @Schema(description = "amount to be transferred.", example = "1000", required = true)
     private BigDecimal amount;
 
-    @Schema(description = "Debitor account number. Should be within  6-20 character's.",example = "90876723492827", required = true)
+    @Schema(description = "Debitor account number. Should be within  6-20 character's.", example = "90876723492827", required = true)
     @AccountNumberConstraint
     private BigInteger debtorAccountNumber;
 
-    @Schema(description = "Creditor account number. Should be within  6-20 character's.",example = "90876723492827", required = true)
+    @Schema(description = "Creditor account number. Should be within  6-20 character's.", example = "90876723492827", required = true)
     @AccountNumberConstraint
     private BigInteger creditorAccountNumber;
 
-    @Schema(description = "Name of creditor.",example = "John Meyers", required = true)
+    @Schema(description = "Name of creditor.", example = "John Meyers", required = true)
     @NotBlank(message = "Name is mandatory")
     private String creditorName;
 
-    @Schema(description = "If not provided defaults to today's date.",example = "2018-02-21 15:30:14.332" , required = false)
+    @Schema(description = "If not provided defaults to today's date.", example = "2018-02-21 15:30:14.332", required = false)
     private Date transferDate;
 
-    @Schema(description = "DEBIT/CREDIT",required = true)
+    @Schema(description = "DEBIT/CREDIT", required = true)
     private TransactionType type;
 
-    @Schema(description = "Defaults to false. Indicate whether transaction is international or not.", required = true,defaultValue = "false")
+    @Schema(description = "Defaults to false. Indicate whether transaction is international or not.", required = true, defaultValue = "false")
     private boolean isInternationalTransfer;
-
 
 
     public BigDecimal getAmount() {

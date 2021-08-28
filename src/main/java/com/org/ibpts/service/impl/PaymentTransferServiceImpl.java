@@ -53,7 +53,7 @@ public class PaymentTransferServiceImpl implements PaymentTransferService {
             } else {
                 generateSigningUrl = false;
                 response.setStatus(APIConstants.ERROR);
-                response.setMessage("Debtor  Account is not active. Please proceed after registration.");
+                response.setMessage("Debtor  Account is not active. Please contact support.");
             }
         } else {
             generateSigningUrl = false;
@@ -94,7 +94,7 @@ public class PaymentTransferServiceImpl implements PaymentTransferService {
     private BigDecimal setUpdatedTransferAmountForInternationalTransaction(PaymentTransferRequest request, PaymentTransferResponse response, StringBuilder message, BigDecimal transferAmount) {
         if (request.isInternationalTransfer()) {
             response.setInternationalTransactionFee("10 NOK");
-            message.append("International transfer fee of 100 NOK will be applied to this transaction.");
+            message.append("International transfer fee of 10 NOK will be applied to this transaction.");
             transferAmount = transferAmount.add(BigDecimal.valueOf(10));
         }
         return transferAmount;
@@ -155,7 +155,7 @@ public class PaymentTransferServiceImpl implements PaymentTransferService {
         //psd2 logic goes here
 
         return new ConfirmationResponse(reference, "Transaction started. " +
-                "Please use the schedule to track the progress of your payment.");
+                "Please use the transaction API to track the progress of your payment.");
 
     }
 

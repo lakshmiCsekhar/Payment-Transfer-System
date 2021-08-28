@@ -46,7 +46,7 @@ public class TransactionsAPI {
     @GetMapping(value = "/single/{reference}")
     public ResponseEntity getTransaction(@PathVariable(required = true) String reference) {
         try {
-            Transaction transaction =  transactionService.getTransaction(reference);
+            Transaction transaction = transactionService.getTransaction(reference);
             return ResponseEntity.ok(transaction);
         } catch (ApiException e) {
             return ResponseEntity.internalServerError().body("Something went wrong :  " + e.getMessage());

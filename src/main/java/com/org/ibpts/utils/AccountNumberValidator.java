@@ -15,12 +15,12 @@ public class AccountNumberValidator {
 
     public boolean validate(BigInteger accountNumber) {
 
-        if (accountNumber ==null || accountNumber.compareTo(BigInteger.ZERO) == 0) {
+        if (accountNumber == null || accountNumber.compareTo(BigInteger.ZERO) == 0) {
             log.info("Account Number is invalid / Zero");
             return false;
         } else {
             Pattern pattern = Pattern.compile(regex);
-            Matcher matcher = pattern.matcher( String.valueOf(accountNumber));
+            Matcher matcher = pattern.matcher(String.valueOf(accountNumber));
             return matcher.matches();
             //logic for IBAN validation/ country specific account number
 

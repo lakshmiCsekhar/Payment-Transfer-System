@@ -1,13 +1,11 @@
 package com.org.ibpts.repository;
 
 import com.org.ibpts.model.Account;
-import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -23,7 +21,7 @@ public interface AccountInformationRepository extends CrudRepository<Account, In
 
     @Modifying
     @Transactional
-    @Query(value = UPDATE_ACCOUNT_BALANCE , nativeQuery = true)
+    @Query(value = UPDATE_ACCOUNT_BALANCE, nativeQuery = true)
     public void updateBalanceForAccount(BigDecimal balance, String id);
 
 

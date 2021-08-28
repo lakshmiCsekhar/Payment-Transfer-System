@@ -9,6 +9,7 @@ import java.math.BigInteger;
 public interface TransactionService {
 
     TransactionsResponse getTransactions(BigInteger accountNumber) throws ApiException;
+
     Transaction getTransaction(String reference) throws ApiException;
 
 }

@@ -11,8 +11,9 @@ import java.util.Date;
 @Table
 public class Transactions {
 
-    @Id @GeneratedValue(generator="system-uuid")
-    @GenericGenerator(name="system-uuid", strategy = "uuid")
+    @Id
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
     @Column
     private String reference;
     @Column(nullable = false)
@@ -21,7 +22,7 @@ public class Transactions {
     private String debtorId;
     @Column(nullable = false)
     private BigDecimal amount;
-    @Column(columnDefinition="DATETIME")
+    @Column(columnDefinition = "DATETIME")
     private Date transactionDate;
     @Column
     private String status;

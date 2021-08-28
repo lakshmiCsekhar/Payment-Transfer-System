@@ -28,11 +28,10 @@ public class AccountInformationServiceImpl implements AccountInformationService 
         try {
             AccountBalanceResponse response = new AccountBalanceResponse();
             Optional<Account> account = accountInformationRepository.findByAccountNumber(accountNumber);
-            if(account.isPresent()){
+            if (account.isPresent()) {
                 BeanUtils.copyProperties(response, account.get());
                 response.setMessage(APIConstants.SUCCESS);
-            }
-            else {
+            } else {
                 throw new ApiException("Account number is not in system. Please contact support.");
             }
             return response;

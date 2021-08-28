@@ -8,7 +8,6 @@ import com.org.ibpts.repository.TransactionsRepository;
 import com.org.ibpts.request.PaymentTransferRequest;
 import com.org.ibpts.response.ConfirmationResponse;
 import com.org.ibpts.response.PaymentTransferResponse;
-import com.org.ibpts.response.Transaction;
 import com.org.ibpts.service.impl.PaymentTransferServiceImpl;
 import com.org.ibpts.utils.AccountNumberValidator;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,7 +16,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.math.BigDecimal;
@@ -150,7 +148,7 @@ public class PaymentTransferServiceImplTest {
         expectedOutput.setStatus("AWAITING_CONFIRMATION");
         expectedOutput.setSigningUrl("http://localhost:8080/v1/payment/confirm/?debtorId=12345&creditorId=93839&reference=fpZnKVTOaB&transactionDate=avc&amount=110&type=DEBIT");
         PaymentTransferRequest input = new PaymentTransferRequest();
-        input.setAmount(new BigDecimal(100 ) );
+        input.setAmount(new BigDecimal(100));
         input.setDebtorAccountNumber(new BigInteger("90876723492827"));
         input.setCreditorAccountNumber(new BigInteger("8787656557"));
         input.setCreditorName("Johny Depp");

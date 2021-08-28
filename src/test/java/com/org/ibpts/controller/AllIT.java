@@ -45,13 +45,13 @@ public class AllIT {
         paymentTransferRequest.setCreditorAccountNumber(new BigInteger("90856456564"));
         paymentTransferRequest.setCreditorName("A nice name");
         HttpEntity<PaymentTransferRequest> entity = new HttpEntity<PaymentTransferRequest>(paymentTransferRequest, headers);
-        ResponseEntity<PaymentTransferResponse> response = restTemplate.exchange("http://localhost:" + port+ "/v1/payment/transfer", HttpMethod.POST, entity, PaymentTransferResponse.class);
+        ResponseEntity<PaymentTransferResponse> response = restTemplate.exchange("http://localhost:" + port + "/v1/payment/transfer", HttpMethod.POST, entity, PaymentTransferResponse.class);
         Assertions.assertNotNull(response);
 
         PaymentTransferResponse ptResponse = response.getBody();
         Map<String, String> params = queryParamsToMap(ptResponse.getSigningUrl().split("\\?")[1]);
 
-        StringBuilder url = new StringBuilder("http://localhost:" + port+ "/v1/payment/confirm?");
+        StringBuilder url = new StringBuilder("http://localhost:" + port + "/v1/payment/confirm?");
         url.append("debtorId=").append(params.get("debtorId"));
         url.append("&creditorId=").append(params.get("creditorId"));
         url.append("&reference=").append(params.get("reference"));
@@ -61,17 +61,17 @@ public class AllIT {
         ResponseEntity<ConfirmationResponse> confirm = restTemplate.getForEntity(url.toString(), ConfirmationResponse.class);
         Assertions.assertNotNull(confirm);
 
-        AccountBalanceResponse accountBalanceResponse = this.restTemplate.getForObject("http://localhost:" + port+ "/v1/account/90876723492827/balance", AccountBalanceResponse.class);
+        AccountBalanceResponse accountBalanceResponse = this.restTemplate.getForObject("http://localhost:" + port + "/v1/account/90876723492827/balance", AccountBalanceResponse.class);
         assertNotNull(accountBalanceResponse);
         assertEquals(new BigDecimal("200.45"), accountBalanceResponse.getBalance());
 
-        TransactionsResponse getTransactions = this.restTemplate.getForObject("http://localhost:" + port+ "/v1/transactions/90876723492827/mini", TransactionsResponse.class);
+        TransactionsResponse getTransactions = this.restTemplate.getForObject("http://localhost:" + port + "/v1/transactions/90876723492827/mini", TransactionsResponse.class);
         assertNotNull(getTransactions);
         assertEquals(20, getTransactions.getTransactions().size());
 
-        Transaction getTransaction = this.restTemplate.getForObject("http://localhost:" + port+ "/v1/transactions/single/sdssdsa", Transaction.class);
+        Transaction getTransaction = this.restTemplate.getForObject("http://localhost:" + port + "/v1/transactions/single/sdssdsa", Transaction.class);
         assertNotNull(getTransaction);
-        assertEquals("sdssdsa",getTransaction.getReference());
+        assertEquals("sdssdsa", getTransaction.getReference());
 
     }
 

@@ -25,7 +25,7 @@ public class PaymentTransferServiceAPI {
     @Operation(summary = "Starts the payment process and returns a url for confirmation.")
     public ResponseEntity createPaymentTransfer(@Valid @RequestBody PaymentTransferRequest request) {
         try {
-            PaymentTransferResponse response  = paymentTransferService.createPaymentTransfer(request);
+            PaymentTransferResponse response = paymentTransferService.createPaymentTransfer(request);
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             return ResponseEntity.internalServerError().body(e.getMessage());
@@ -35,7 +35,7 @@ public class PaymentTransferServiceAPI {
     @Hidden
     @GetMapping(value = "/confirm")
     public ResponseEntity confirmTransfer(@RequestParam String debtorId, @RequestParam(required = false) String creditorId, @RequestParam(required = false) BigInteger creditorAccountNumber,
-                                                @RequestParam String reference, @RequestParam BigDecimal amount, @RequestParam String type) {
+                                          @RequestParam String reference, @RequestParam BigDecimal amount, @RequestParam String type) {
         ConfirmationResponse response = paymentTransferService.confirmTransfer(debtorId, creditorId, creditorAccountNumber,
                 reference, amount, type);
         return ResponseEntity.ok(response);

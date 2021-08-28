@@ -13,7 +13,7 @@ public class AccountNumberConstraintValidator implements ConstraintValidator<Acc
     AccountNumberValidator validator;
 
     @Autowired
-    public AccountNumberConstraintValidator( AccountNumberValidator validator) {
+    public AccountNumberConstraintValidator(AccountNumberValidator validator) {
         this.validator = validator;
     }
 

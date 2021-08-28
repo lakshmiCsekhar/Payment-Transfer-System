@@ -5,7 +5,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-public class AccountBalanceResponse{
+public class AccountBalanceResponse {
 
     @Schema(description = "Account holder name.")
     private String name;
